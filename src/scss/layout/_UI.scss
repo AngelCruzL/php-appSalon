@@ -1,0 +1,31 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.appContainer {
+  @include m.respond(tablet) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    min-block-size: 100vh;
+  }
+
+  .img {
+    block-size: 20rem;
+    background-image: url('../img/1.jpg');
+    background-size: cover;
+    background-position: center;
+
+    @include m.respond(tablet) {
+      block-size: auto;
+    }
+  }
+
+  .app {
+    inline-size: 95%;
+    margin-inline: auto;
+    padding-block: 3rem;
+  }
+}
+
+.pageName {
+  margin-block: 5rem;
+}

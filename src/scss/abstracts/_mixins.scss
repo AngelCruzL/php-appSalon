@@ -39,7 +39,7 @@
   transition-property: background-color;
   transition-duration: 0.3s;
 
-  @include m.respond(tablet) {
+  @include respond(tablet) {
     width: auto;
   }
 

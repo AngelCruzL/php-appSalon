@@ -11,7 +11,12 @@
 </head>
 
 <body>
-  <?php echo $contenido; ?>
+  <div class="appContainer">
+    <div class="img"></div>
+    <div class="app">
+      <?php echo $content; ?>
+    </div>
+  </div>
 </body>
 
 </html>
