@@ -16,9 +16,9 @@ class LoginController
     echo 'LoginController::logout';
   }
 
-  public static function createAccount()
+  public static function createAccount(Router $router)
   {
-    echo 'LoginController::createAccount';
+    $router->render('auth/create-account', []);
   }
 
   public static function forgotPassword()
