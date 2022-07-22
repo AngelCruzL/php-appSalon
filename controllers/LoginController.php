@@ -21,9 +21,9 @@ class LoginController
     $router->render('auth/create-account', []);
   }
 
-  public static function forgotPassword()
+  public static function forgotPassword(Router $router)
   {
-    echo 'LoginController::forgotPassword';
+    $router->render('auth/forgot-password', []);
   }
 
   public static function resetPassword()

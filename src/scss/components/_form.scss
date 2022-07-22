@@ -2,6 +2,7 @@
 @use '../abstracts/mixins' as m;
 
 .form {
+  margin-block-start: 8rem;
   inline-size: 100%;
 
   .field {
