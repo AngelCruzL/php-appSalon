@@ -1,0 +1,20 @@
+{
+  "name": "angelcruz/app-salon",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "MVC\\": "./",
+      "Controllers\\": "./controllers",
+      "Model\\": "./models"
+    }
+  },
+  "authors": [
+    {
+      "name": "Ángel Cruz",
+      "email": "59263971+AngelCruzL@users.noreply.github.com"
+    }
+  ],
+  "require": {
+    "vlucas/phpdotenv": "^5.4"
+  }
+}

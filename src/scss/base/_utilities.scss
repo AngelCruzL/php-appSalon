@@ -1,0 +1,6 @@
+@use '../abstracts/variables' as v;
+
+.container {
+  inline-size: min(95%, 120rem);
+  margin-inline: auto;
+}

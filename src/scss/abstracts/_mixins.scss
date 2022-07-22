@@ -1,0 +1,50 @@
+@use 'variables' as var;
+
+@mixin respond($breakpoint) {
+  @if $breakpoint==phone {
+    @media (min-width: var.$phone) {
+      @content;
+    }
+  }
+  @if $breakpoint==tablet {
+    @media (min-width: var.$tablet) {
+      @content;
+    }
+  }
+  @if $breakpoint==desktop {
+    @media (min-width: var.$desktop) {
+      @content;
+    }
+  }
+}
+
+@mixin grid($column, $gap) {
+  display: grid;
+  grid-template-columns: repeat($column, 1fr);
+  gap: $gap;
+}
+
+@mixin button($backgroundColor, $textColor) {
+  display: block;
+  margin-block: var.$gap;
+  padding-block: 1.2rem;
+  padding-inline: 2.4rem;
+  inline-size: 100%;
+  background-color: $backgroundColor;
+  border: none;
+  color: $textColor;
+  font-size: 2rem;
+  font-weight: var.$fontWeightBold;
+  text-align: center;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+
+  @include m.respond(tablet) {
+    width: auto;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: darken($backgroundColor, 10%);
+  }
+}

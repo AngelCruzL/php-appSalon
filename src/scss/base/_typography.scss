@@ -1,0 +1,31 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+body {
+  font-family: v.$fontPrimary;
+  font-size: 1.6rem;
+}
+h1,
+h2,
+h3 {
+  font-family: v.$fontPrimary;
+  font-weight: v.$fontWeightBlack;
+  color: v.$colorWhite;
+  text-align: center;
+}
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3.6rem;
+}
+h3 {
+  font-size: 3rem;
+}
+p {
+  color: v.$colorWhite;
+  font-size: 2rem;
+}
+a {
+  text-decoration: none;
+}

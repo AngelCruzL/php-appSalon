@@ -1,0 +1,15 @@
+.vscode
+node_modules
+.DS_Store
+dist
+dist-ssr
+build
+images
+*.local
+.env
+package-lock.json
+yarn.lock
+*.log
+user.php
+
+/vendor/

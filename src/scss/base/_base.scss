@@ -1,0 +1,34 @@
+@use '../abstracts/variables' as v;
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  block-size: 100%;
+  font-size: 62.5%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100%;
+  background-color: v.$colorBlack;
+  color: v.$colorWhite;
+}
+
+h1,
+h2,
+h3 {
+  margin-block-end: calc(v.$gap / 2);
+}
+
+img,
+picture {
+  display: block;
+  block-size: auto;
+  max-inline-size: 100%;
+}
