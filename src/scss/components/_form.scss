@@ -1,0 +1,23 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.form {
+  inline-size: 100%;
+
+  .field {
+    display: flex;
+    align-items: center;
+    margin-block-end: 2rem;
+
+    label {
+      flex-basis: 10rem;
+    }
+
+    input {
+      flex: 1;
+      border: none;
+      padding: calc(v.$gap / 4);
+      border-radius: 1rem;
+    }
+  }
+}

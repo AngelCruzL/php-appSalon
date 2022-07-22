@@ -1,0 +1,18 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.loginActions {
+  margin-block-start: v.$gap;
+
+  @include m.respond(tablet) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  a {
+    display: block;
+    margin-block-end: calc(v.$gap / 2);
+    text-align: center;
+    color: v.$colorWhite;
+  }
+}
