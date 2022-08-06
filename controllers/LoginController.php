@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Classes\Email;
 use MVC\Router;
 use Model\User;
 
@@ -35,7 +36,10 @@ class LoginController
           $user->hashPassword();
           $user->createToken();
 
-          debug($user);
+          $email = new Email($user->email, $user->firstname, $user->token);
+          $email->sendConfirmationEmail();
+
+          debug($email);
         }
       }
     }
@@ -44,6 +48,10 @@ class LoginController
       'user' => $user,
       'alerts' => $alerts
     ]);
+  }
+
+  public static function confirmAccount()
+  {
   }
 
   public static function forgotPassword(Router $router)
