@@ -66,4 +66,9 @@ class User extends ActiveRecord
   {
     $this->password = password_hash($this->password, PASSWORD_BCRYPT);
   }
+
+  public function createToken()
+  {
+    $this->token = bin2hex(random_bytes(32));
+  }
 }

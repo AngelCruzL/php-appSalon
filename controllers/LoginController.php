@@ -33,6 +33,8 @@ class LoginController
           $alerts = User::getAlerts();
         } else {
           $user->hashPassword();
+          $user->createToken();
+
           debug($user);
         }
       }
