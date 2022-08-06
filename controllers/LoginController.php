@@ -27,6 +27,13 @@ class LoginController
       $alerts = $user->validateNewAccount();
 
       if (empty($alerts)) {
+        $result = $user->checkIfUserExists();
+
+        if ($result->num_rows) {
+          $alerts = User::getAlerts();
+        } else {
+          echo 'User created';
+        }
       }
     }
 
