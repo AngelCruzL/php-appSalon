@@ -1,0 +1,20 @@
+@use '../abstracts/variables' as v;
+
+.alert {
+  display: block;
+  inline-size: 100%;
+  margin-block-end: 2rem;
+  padding: calc(v.$gap / 4);
+  color: v.$colorWhite;
+  font-weight: v.$fontWeightBold;
+  text-align: center;
+  text-transform: uppercase;
+
+  &.error {
+    background-color: v.$colorRed;
+  }
+
+  &.success {
+    background-color: v.$colorGreen;
+  }
+}
