@@ -32,7 +32,8 @@ class LoginController
         if ($result->num_rows) {
           $alerts = User::getAlerts();
         } else {
-          echo 'User created';
+          $user->hashPassword();
+          debug($user);
         }
       }
     }
