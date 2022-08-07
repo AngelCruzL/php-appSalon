@@ -49,3 +49,7 @@
     <button type="button" id="nextItem" class="btn">Siguiente &raquo;</button>
   </div>
 </div>
+
+<?php $script = '
+  <script src="build/js/app.js"></script>
+'; ?>

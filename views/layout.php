@@ -7,7 +7,6 @@
   <title>App Salón</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="build/css/app.css">
-  <script defer src="build/js/app.js"></script>
 </head>
 
 <body>
@@ -17,6 +16,8 @@
       <?php echo $content; ?>
     </div>
   </div>
+
+  <?php echo $script ?? ''; ?>
 </body>
 
 </html>
