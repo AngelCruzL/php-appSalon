@@ -1,6 +1,29 @@
 @use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
 
 .container {
   inline-size: min(95%, 120rem);
   margin-inline: auto;
+}
+
+.textCenter {
+  text-align: center !important;
+}
+
+@each $size in v.$sizes {
+  .mt-#{$size} {
+    margin-block-start: #{$size}em !important;
+  }
+
+  .mb-#{$size} {
+    margin-block-end: #{$size}em !important;
+  }
+}
+
+.show {
+  display: block !important;
+}
+
+.hide {
+  display: none !important;
 }
