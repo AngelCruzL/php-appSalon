@@ -35,8 +35,8 @@ class User extends ActiveRecord
     $this->email = $args['email'] ?? '';
     $this->password = $args['password'] ?? '';
     $this->phone = $args['phone'] ?? '';
-    $this->is_admin = $args['is_admin'] ?? null;
-    $this->is_confirmed = $args['is_confirmed'] ?? null;
+    $this->is_admin = $args['is_admin'] ?? '0';
+    $this->is_confirmed = $args['is_confirmed'] ?? '0';
     $this->token = $args['token'] ?? '';
   }
 
@@ -69,6 +69,7 @@ class User extends ActiveRecord
 
   public function createToken()
   {
-    $this->token = bin2hex(random_bytes(32));
+    // $this->token = bin2hex(random_bytes(32));
+    $this->token = uniqid();
   }
 }

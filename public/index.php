@@ -15,6 +15,7 @@ $router->get('/crear-cuenta', [LoginController::class, 'createAccount']);
 $router->post('/crear-cuenta', [LoginController::class, 'createAccount']);
 
 $router->get('/confirmar-cuenta', [LoginController::class, 'confirmAccount']);
+$router->get('/mensaje', [LoginController::class, 'message']);
 
 $router->get('/olvide', [LoginController::class, 'forgotPassword']);
 $router->post('/olvide', [LoginController::class, 'forgotPassword']);

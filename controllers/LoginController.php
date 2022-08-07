@@ -39,7 +39,11 @@ class LoginController
           $email = new Email($user->email, $user->firstname, $user->token);
           $email->sendConfirmationEmail();
 
-          debug($email);
+          $result = $user->save();
+
+          if ($result) {
+            header('Location: /mensaje');
+          }
         }
       }
     }
@@ -62,5 +66,10 @@ class LoginController
   public static function resetPassword()
   {
     echo 'LoginController::resetPassword';
+  }
+
+  public static function message(Router $router)
+  {
+    $router->render('auth/message', []);
   }
 }
