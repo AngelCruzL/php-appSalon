@@ -1,0 +1,31 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.tabs {
+  @include m.respond(tablet) {
+    display: flex;
+  }
+
+  button {
+    display: block;
+    margin-block-end: 1rem;
+    padding: 1rem;
+    inline-size: 100%;
+    border: none;
+    background-color: v.$colorBlue;
+    color: v.$colorWhite;
+    font-weight: v.$fontWeightBold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      cursor: pointer;
+      background-color: darken(v.$colorBlue, 10%);
+    }
+
+    &.active {
+      background-color: v.$colorWhite;
+      color: v.$colorBlue;
+    }
+  }
+}
