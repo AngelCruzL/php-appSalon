@@ -10,7 +10,16 @@ class LoginController
 {
   public static function login(Router $router)
   {
-    $router->render('auth/login');
+    $alerts = [];
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $auth = new User($_POST);
+      $alerts = $auth->loginValidation();
+    }
+
+    $router->render('auth/login', [
+      'alerts' => $alerts
+    ]);
   }
 
   public static function logout()

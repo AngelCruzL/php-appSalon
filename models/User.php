@@ -72,4 +72,12 @@ class User extends ActiveRecord
     // $this->token = bin2hex(random_bytes(32));
     $this->token = uniqid();
   }
+
+  public function loginValidation()
+  {
+    if (empty($this->email)) self::$alerts['error'][] = 'El correo electrónico es obligatorio';
+    if (empty($this->password)) self::$alerts['error'][] = 'La contraseña es obligatoria';
+
+    return self::$alerts;
+  }
 }
