@@ -202,4 +202,20 @@ class ActiveRecord
 
 		return array_shift($result);
 	}
+
+	/**
+	 * It takes a column name and a value, and returns the first row that matches the column and value
+	 *
+	 * @param column The column name to search for.
+	 * @param value The value to be searched for.
+	 *
+	 * @return An array of objects.
+	 */
+	public static function where($column, $value)
+	{
+		$query = "SELECT * FROM " . static::$table . " WHERE ${column} = '${value}';";
+		$result = self::sqlConsult($query);
+
+		return array_shift($result);
+	}
 }

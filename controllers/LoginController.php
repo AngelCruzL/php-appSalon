@@ -54,8 +54,27 @@ class LoginController
     ]);
   }
 
-  public static function confirmAccount()
+  public static function confirmAccount(Router $router)
   {
+    $alerts = [];
+
+    $token = s($_GET['token']);
+    $user = User::where('token', $token);
+
+    if (empty($user)) {
+      User::setAlert('error', 'El token no es válido');
+    } else {
+      $user->is_confirmed = 1;
+      $user->token = null;
+      $user->save();
+      User::setAlert('success', 'La cuenta ha sido confirmada correctamente');
+    }
+
+    $alerts = User::getAlerts();
+
+    $router->render('auth/confirm-account', [
+      'alerts' => $alerts
+    ]);
   }
 
   public static function forgotPassword(Router $router)
