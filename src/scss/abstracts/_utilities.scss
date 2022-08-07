@@ -1,0 +1,16 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.textCenter {
+  text-align: center !important;
+}
+
+@each $size in v.$sizes {
+  .mt-#{$size} {
+    margin-block-start: #{$size}em !important;
+  }
+
+  .mb-#{$size} {
+    margin-block-end: #{$size}em !important;
+  }
+}
