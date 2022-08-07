@@ -4,6 +4,7 @@ require_once __DIR__ . '/../includes/app.php';
 
 use MVC\Router;
 use Controllers\LoginController;
+use Controllers\AppointmentController;
 
 $router = new Router();
 
@@ -21,5 +22,7 @@ $router->get('/olvide', [LoginController::class, 'forgotPassword']);
 $router->post('/olvide', [LoginController::class, 'forgotPassword']);
 $router->get('/recuperar', [LoginController::class, 'resetPassword']);
 $router->post('/recuperar', [LoginController::class, 'resetPassword']);
+
+$router->get('/cita', [AppointmentController::class, 'index']);
 
 $router->checkRoutes();
