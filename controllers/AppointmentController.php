@@ -8,6 +8,10 @@ class AppointmentController
 {
   public static function index(Router $router)
   {
-    $router->render('appointment/index', []);
+    session_start();
+
+    $router->render('appointment/index', [
+      'name' => $_SESSION['fullname'],
+    ]);
   }
 }

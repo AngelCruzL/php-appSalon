@@ -19,6 +19,12 @@
       border: none;
       padding: calc(v.$gap / 4);
       border-radius: 1rem;
+
+      &:disabled {
+        cursor: not-allowed;
+        background-color: lighten(v.$colorBlack, 30%);
+        color: v.$colorWhite;
+      }
     }
   }
 }
