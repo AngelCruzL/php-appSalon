@@ -1,0 +1,15 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.paginator {
+  padding-block: v.$gap;
+
+  @include m.respond(phone) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  button {
+    margin-block: 1rem;
+  }
+}
