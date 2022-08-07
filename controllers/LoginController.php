@@ -143,9 +143,41 @@ class LoginController
     ]);
   }
 
-  public static function resetPassword()
+  public static function resetPassword(Router $router)
   {
-    echo 'LoginController::resetPassword';
+    $alerts = [];
+    $error = false;
+
+    $token = s($_GET['token']);
+    $user = User::where('token', $token);
+    if (empty($user)) {
+      User::setAlert('error', 'El token no es válido');
+      $error = true;
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $password = new User($_POST);
+      $alerts = $password->validatePassword();
+
+      if (empty($alerts)) {
+        $user->password = $password->password;
+        $user->hashPassword();
+        $user->token = null;
+        $result =  $user->save();
+
+        if ($result) {
+          User::setAlert('success', 'La contraseña ha sido restablecida correctamente');
+          $error = true;
+          header('Refresh: 3; url=/');
+        }
+      }
+    }
+
+    $alerts =  User::getAlerts();
+    $router->render('auth/reset-password', [
+      'alerts' => $alerts,
+      'error' => $error
+    ]);
   }
 
   public static function message(Router $router)

@@ -105,4 +105,12 @@ class User extends ActiveRecord
 
     return self::$alerts;
   }
+
+  public function validatePassword()
+  {
+    if (empty($this->password)) self::$alerts['error'][] = 'La contraseña es obligatoria';
+    if (strlen($this->password) < 8) self::$alerts['error'][] = 'La contraseña debe tener al menos 8 caracteres';
+
+    return self::$alerts;
+  }
 }
