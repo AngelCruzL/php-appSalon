@@ -44,4 +44,32 @@ class Email
     $mail->Body = $mailContent;
     $mail->send();
   }
+
+  public function sendForgotPasswordEmail()
+  {
+    $mail = new PHPMailer();
+    $mail->isSMTP();
+    $mail->Host =   $_ENV['EMAIL_HOST'];
+    $mail->SMTPAuth = $_ENV['EMAIL_SMTPAUTH'];
+    $mail->Port = $_ENV['EMAIL_PORT'];
+    $mail->Username = $_ENV['EMAIL_USERNAME'];
+    $mail->Password = $_ENV['EMAIL_PASSWORD'];
+
+    $mail->setFrom($_ENV['EMAIL_FROM_ADDRESS']);
+    $mail->addAddress('test@user.com', 'AppSalon.com');
+    $mail->Subject = 'Restablece tu contraseña';
+    $mail->isHTML(true);
+    $mail->CharSet = 'UTF-8';
+
+    $mailContent = '
+      <html>
+        <p><strong>Hola ' . $this->name . '</strong>, has solicitado restablecer tu contraseña,para hacerlo sigue el siguiente enlace:</p>
+        <p><a href="http://localhost:3000/recuperar?token=' . $this->token . '">Restablece tu contraseña</a></p>
+        <p>Si no has solicitado este cambio, puedes ignorar este mensaje.</p>
+      </html>
+    ';
+
+    $mail->Body = $mailContent;
+    $mail->send();
+  }
 }

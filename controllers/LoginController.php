@@ -115,7 +115,32 @@ class LoginController
 
   public static function forgotPassword(Router $router)
   {
-    $router->render('auth/forgot-password', []);
+    $alerts = [];
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $auth = new User($_POST);
+      $alerts = $auth->validateEmail();
+
+      if (empty($alerts)) {
+        $user = User::where('email', $auth->email);
+
+        if ($user && $user->is_confirmed === '1') {
+          $user->createToken();
+          $user->save();
+          $email = new Email($user->email, $user->firstname, $user->token);
+          $email->sendForgotPasswordEmail();
+          User::setAlert('success', 'Se ha enviado un correo electrónico a ' . $user->email . ' para restablecer su contraseña');
+        } else {
+          User::setAlert('error', 'El usuario no existe o no está confirmado');
+        }
+      }
+    }
+
+    $alerts =  User::getAlerts();
+
+    $router->render('auth/forgot-password', [
+      'alerts' => $alerts
+    ]);
   }
 
   public static function resetPassword()

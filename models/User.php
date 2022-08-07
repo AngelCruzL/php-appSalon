@@ -98,4 +98,11 @@ class User extends ActiveRecord
 
     return $result;
   }
+
+  public function validateEmail()
+  {
+    if (empty($this->email)) self::$alerts['error'][] = 'El correo electrónico es obligatorio';
+
+    return self::$alerts;
+  }
 }
