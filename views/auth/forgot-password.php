@@ -4,7 +4,7 @@
 <?php include_once __DIR__ . '/../templates/alerts.php'; ?>
 
 <form method="POST" class="form">
-  <div class="field">
+  <div class="formField">
     <label for="email">Correo electrónico</label>
     <input type="email" name="email" id="email" placeholder="correo@correo.com" />
   </div>

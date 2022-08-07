@@ -4,12 +4,12 @@
 <?php include_once __DIR__ . '/../templates/alerts.php'; ?>
 
 <form method="POST" class="form">
-  <div class="field">
+  <div class="formField">
     <label for="email">Correo electrónico</label>
     <input type="email" name="email" id="email" placeholder="correo@correo.com">
   </div>
 
-  <div class="field">
+  <div class="formField">
     <label for="password">Contraseña</label>
     <input type="password" name="password" id="password" placeholder="contraseña">
   </div>

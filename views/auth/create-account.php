@@ -6,27 +6,27 @@ include_once __DIR__ . '/../templates/alerts.php';
 ?>
 
 <form method="POST" class="form">
-  <div class="field">
+  <div class="formField">
     <label for="name">Nombre</label>
     <input type="text" id="name" name="firstname" placeholder="Luis" value="<?php echo s($user->firstname); ?>">
   </div>
 
-  <div class="field">
+  <div class="formField">
     <label for="lastname">Apellido</label>
     <input type="text" id="lastname" name="lastname" placeholder="Lara" value="<?php echo s($user->lastname); ?>">
   </div>
 
-  <div class="field">
+  <div class="formField">
     <label for="phone">Teléfono</label>
     <input type="tel" id="phone" name="phone" placeholder="5522339964" value="<?php echo s($user->phone); ?>">
   </div>
 
-  <div class="field">
+  <div class="formField">
     <label for="email">Correo Electrónico</label>
     <input type="email" id="email" name="email" placeholder="correo@correo.com" value="<?php echo s($user->email); ?>">
   </div>
 
-  <div class="field">
+  <div class="formField">
     <label for="password">Contraseña</label>
     <input type="password" id="password" name="password" placeholder="contraseña" value="<?php echo s($user->password); ?>">
   </div>

@@ -5,7 +5,7 @@
 
 <?php if ($error) return; ?>
 <form method="POST" class="form">
-  <div class="field">
+  <div class="formField">
     <label for="password">Nueva Contraseña</label>
     <input type="password" id="password" name="password" placeholder="Nueva contraseña">
   </div>
