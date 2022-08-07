@@ -14,6 +14,32 @@ CREATE TABLE users(
   token VARCHAR(15)
 );
 
+INSERT INTO users(
+  firstname,
+  lastname,
+  email,
+  password,
+  phone,
+  is_admin,
+  is_confirmed
+) VALUES (
+  'John',
+  'Doe',
+  'admin@test.com',
+  '$2y$10$fwGKg0jKv4r2bDuPWUUSvOJj1clOjkwBbc/V9DBaiQP1w.uhCldOa',
+  '0123456789',
+  1,
+  1
+), (
+  'Jane',
+  'Doe',
+  'client@test.com',
+  '$2y$10$fwGKg0jKv4r2bDuPWUUSvOJj1clOjkwBbc/V9DBaiQP1w.uhCldOa',
+  '9876541230',
+  0,
+  1
+);
+
 CREATE TABLE services(
   id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(60),

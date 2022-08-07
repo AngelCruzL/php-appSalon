@@ -80,4 +80,22 @@ class User extends ActiveRecord
 
     return self::$alerts;
   }
+
+  public function loginChecks($password)
+  {
+    $result = $this->checkPassword($password);
+
+    if (!$result || !$this->is_confirmed) {
+      self::$alerts['error'][] = 'La contraseña es incorrecta o la cuenta no ha sido verificada';
+    } else {
+      return true;
+    }
+  }
+
+  private function checkPassword($password)
+  {
+    $result = password_verify($password, $this->password);
+
+    return $result;
+  }
 }

@@ -15,7 +15,34 @@ class LoginController
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $auth = new User($_POST);
       $alerts = $auth->loginValidation();
+
+      if (empty($alerts)) {
+        $user = User::where('email', $auth->email);
+
+        if ($user) {
+          $isUserAuth =   $user->loginChecks($auth->password);
+
+          if ($isUserAuth) {
+            session_start();
+            $_SESSION['id'] = $user->id;
+            $_SESSION['fullname'] = $user->firstname . ' ' . $user->lastname;
+            $_SESSION['email'] = $user->email;
+            $_SESSION['isLogged'] = true;
+
+            if ($user->is_admin === '1') {
+              $_SESSION['isAdmin'] = $user->is_admin ?? null;
+              header('Location: /admin');
+            } else {
+              header('Location: /cita');
+            }
+          }
+        } else {
+          User::setAlert('error', 'Usuario no encontrado');
+        }
+      }
     }
+
+    $alerts = User::getAlerts();
 
     $router->render('auth/login', [
       'alerts' => $alerts
