@@ -5,6 +5,7 @@ require_once __DIR__ . '/../includes/app.php';
 use MVC\Router;
 use Controllers\LoginController;
 use Controllers\AppointmentController;
+use Controllers\APIController;
 
 $router = new Router();
 
@@ -24,5 +25,7 @@ $router->get('/recuperar', [LoginController::class, 'resetPassword']);
 $router->post('/recuperar', [LoginController::class, 'resetPassword']);
 
 $router->get('/cita', [AppointmentController::class, 'index']);
+
+$router->get('/api/servicios', [APIController::class, 'index']);
 
 $router->checkRoutes();
