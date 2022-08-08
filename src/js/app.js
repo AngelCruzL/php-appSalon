@@ -8,6 +8,9 @@ function app() {
   hideAllSections();
   showSection();
   tabs();
+  showPaginatorButtons();
+  goToPreviousSection();
+  goToNextSection();
 }
 
 function hideAllSections() {
@@ -18,8 +21,6 @@ function hideAllSections() {
 }
 
 function showSection() {
-  hideAllSections();
-
   const $sectionToShow = document.querySelector(`#step-${step}`);
   $sectionToShow.classList.remove('hide');
   $sectionToShow.classList.add('show');
@@ -31,8 +32,10 @@ function tabs() {
   const $tabsButton = document.querySelectorAll('.tabs button');
   $tabsButton.forEach($button => {
     $button.addEventListener('click', e => {
-      step = e.target.dataset.step;
+      step = +e.target.dataset.step;
+      hideAllSections();
       showSection();
+      showPaginatorButtons();
     });
   });
 }
@@ -44,4 +47,37 @@ function setActiveTab() {
   });
   const $activeTab = document.querySelector(`[data-step='${step}']`);
   $activeTab.classList.add('active');
+}
+
+function showPaginatorButtons() {
+  const $paginatorButtons = document.querySelectorAll('.paginator button');
+  $paginatorButtons.forEach($button => {
+    $button.classList.remove('hidden');
+  });
+  const $previousItemButton = document.querySelector('.paginator #prevItem');
+  const $nextItemButton = document.querySelector('.paginator #nextItem');
+  const $sections = document.querySelectorAll('.section');
+
+  if (step === 1) $previousItemButton.classList.add('hidden');
+  if (step === $sections.length) $nextItemButton.classList.add('hidden');
+}
+
+function goToPreviousSection() {
+  const $previousItemButton = document.querySelector('.paginator #prevItem');
+  $previousItemButton.addEventListener('click', () => {
+    step--;
+    hideAllSections();
+    showSection();
+    showPaginatorButtons();
+  });
+}
+
+function goToNextSection() {
+  const $nextItemButton = document.querySelector('.paginator #nextItem');
+  $nextItemButton.addEventListener('click', () => {
+    step++;
+    hideAllSections();
+    showSection();
+    showPaginatorButtons();
+  });
 }
