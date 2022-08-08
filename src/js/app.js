@@ -1,4 +1,5 @@
 let step = 1;
+const BASE_URL = 'http://localhost:3000';
 
 document.addEventListener('DOMContentLoaded', function () {
   app();
@@ -11,6 +12,7 @@ function app() {
   showPaginatorButtons();
   goToPreviousSection();
   goToNextSection();
+  getApiData();
 }
 
 function hideAllSections() {
@@ -79,5 +81,28 @@ function goToNextSection() {
     hideAllSections();
     showSection();
     showPaginatorButtons();
+  });
+}
+
+async function getApiData() {
+  try {
+    const url = `${BASE_URL}/api/servicios`;
+    const result = await fetch(url);
+    const data = await result.json();
+    showServices(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function showServices(services = []) {
+  services.forEach(({ id, name, price }) => {
+    document.querySelector('#services').insertAdjacentHTML(
+      'beforeend',
+      `<div class="service" data-service-id="${id}">
+        <p class="serviceName">${name}</p>
+        <p class="servicePrice">$${price}</p>
+      </div>`
+    );
   });
 }
