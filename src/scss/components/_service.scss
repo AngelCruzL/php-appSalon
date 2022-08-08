@@ -1,0 +1,26 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.service {
+  padding: 3rem;
+  border-radius: 1rem;
+  background-color: v.$colorWhite;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  p {
+    margin: 0;
+    margin-block-end: calc(v.$gap / 4);
+    color: v.$colorBlack;
+  }
+
+  & &Price {
+    margin-block-end: unset;
+    font-size: 3rem;
+    font-weight: v.$fontWeightBold;
+    color: v.$colorBlue;
+  }
+}

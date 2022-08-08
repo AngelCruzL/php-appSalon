@@ -99,7 +99,7 @@ function showServices(services = []) {
   services.forEach(({ id, name, price }) => {
     document.querySelector('#services').insertAdjacentHTML(
       'beforeend',
-      `<div class="service" data-service-id="${id}">
+      `<div class="service textCenter" data-service-id="${id}">
         <p class="serviceName">${name}</p>
         <p class="servicePrice">$${price}</p>
       </div>`
