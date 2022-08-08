@@ -96,13 +96,25 @@ async function getApiData() {
 }
 
 function showServices(services = []) {
-  services.forEach(({ id, name, price }) => {
-    document.querySelector('#services').insertAdjacentHTML(
-      'beforeend',
-      `<div class="service textCenter" data-service-id="${id}">
-        <p class="serviceName">${name}</p>
-        <p class="servicePrice">$${price}</p>
-      </div>`
-    );
+  services.forEach(service => {
+    const { id, name, price } = service;
+
+    const $serviceName = document.createElement('P');
+    $serviceName.classList.add('serviceName');
+    $serviceName.innerText = name;
+
+    const $servicePrice = document.createElement('P');
+    $servicePrice.classList.add('servicePrice');
+    $servicePrice.innerText = `$${price}`;
+
+    const $serviceDiv = document.createElement('DIV');
+    $serviceDiv.classList.add('service');
+    $serviceDiv.dataset.serviceId = id;
+    $serviceDiv.onclick = () => selectService(service);
+
+    $serviceDiv.appendChild($serviceName);
+    $serviceDiv.appendChild($servicePrice);
+
+    document.querySelector('#services').appendChild($serviceDiv);
   });
 }
