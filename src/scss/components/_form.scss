@@ -12,6 +12,10 @@
 
     label {
       flex-basis: 10rem;
+
+      @include m.respond(phone) {
+        margin-inline-end: 3em;
+      }
     }
 
     input {

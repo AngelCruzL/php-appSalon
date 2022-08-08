@@ -24,6 +24,10 @@
     padding-block: 3rem;
     padding-inline: 1.5rem;
     inline-size: 95%;
+
+    @include m.respond(tablet) {
+      inline-size: 75%;
+    }
   }
 }
 
