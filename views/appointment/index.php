@@ -3,7 +3,7 @@
 
 <div id="app">
   <nav class="tabs mb-4">
-    <button class="active" type="button" data-step="1">Servicios</button>
+    <button type="button" data-step="1">Servicios</button>
     <button type="button" data-step="2">Información de la cita</button>
     <button type="button" data-step="3">Resumen</button>
   </nav>

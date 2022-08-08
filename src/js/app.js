@@ -23,6 +23,8 @@ function showSection() {
   const $sectionToShow = document.querySelector(`#step-${step}`);
   $sectionToShow.classList.remove('hide');
   $sectionToShow.classList.add('show');
+
+  setActiveTab();
 }
 
 function tabs() {
@@ -33,4 +35,13 @@ function tabs() {
       showSection();
     });
   });
+}
+
+function setActiveTab() {
+  const $tabsButton = document.querySelectorAll('[data-step]');
+  $tabsButton.forEach($button => {
+    $button.classList.remove('active');
+  });
+  const $activeTab = document.querySelector(`[data-step='${step}']`);
+  $activeTab.classList.add('active');
 }
