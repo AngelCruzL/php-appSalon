@@ -20,6 +20,7 @@ function app() {
   goToNextSection();
   getApiData();
   loadAppointmentData();
+  showResume();
 }
 
 function hideAllSections() {
@@ -68,7 +69,10 @@ function showPaginatorButtons() {
   const $sections = document.querySelectorAll('.section');
 
   if (step === 1) $previousItemButton.classList.add('hidden');
-  if (step === $sections.length) $nextItemButton.classList.add('hidden');
+  if (step === $sections.length) {
+    $nextItemButton.classList.add('hidden');
+    showResume();
+  }
 }
 
 function goToPreviousSection() {
@@ -167,23 +171,41 @@ function loadAppointmentHour() {
         'Hora no valida, el horario de atención es de 10 a 18'
       );
     } else {
-      appointment.date = e.target.value;
+      appointment.hour = e.target.value;
     }
   });
 }
 
-function showAlert(type, message) {
+function showResume() {
+  if (
+    Object.values(appointment).includes('') ||
+    appointment.services.length === 0
+  ) {
+    showAlert(
+      'error',
+      'Hacen falta de servicios, fecha u hora',
+      '.appointmentResume',
+      false
+    );
+  } else {
+    console.log('tdbn');
+  }
+}
+
+function showAlert(type, message, reference = '.form', hasTimeout = true) {
   const $previousAlert = document.querySelector('.alert');
-  if ($previousAlert) return;
+  if ($previousAlert) $previousAlert.remove();
 
   const $alert = document.createElement('DIV');
   $alert.classList.add('alert');
   $alert.classList.add(type);
   $alert.classList.add('mb-3');
   $alert.innerText = message;
-  document.querySelector('.form').insertAdjacentElement('afterbegin', $alert);
+  document.querySelector(reference).insertAdjacentElement('afterbegin', $alert);
 
-  setTimeout(() => {
-    $alert.remove();
-  }, 3000);
+  if (hasTimeout) {
+    setTimeout(() => {
+      $alert.remove();
+    }, 3000);
+  }
 }

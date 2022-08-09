@@ -38,7 +38,7 @@
       </form>
     </div>
 
-    <div id="step-3" class="section">
+    <div id="step-3" class="section appointmentResume">
       <h2>Resumen</h2>
       <p class="textCenter">Verifica que la información sea correcta</p>
     </div>
