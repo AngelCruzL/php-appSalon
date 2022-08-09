@@ -19,6 +19,7 @@ function app() {
   goToPreviousSection();
   goToNextSection();
   getApiData();
+  loadAppointmentData();
 }
 
 function hideAllSections() {
@@ -132,4 +133,38 @@ function selectService(service) {
   appointment.services = [...services, service];
   const $selectedService = document.querySelector(`[data-service-id='${id}']`);
   $selectedService.classList.toggle('selected');
+}
+
+function loadAppointmentData() {
+  appointment.name = document.querySelector('#name').value;
+  loadAppointmentDate();
+}
+
+function loadAppointmentDate() {
+  const $inputDate = document.querySelector('#date');
+  $inputDate.addEventListener('input', e => {
+    const day = new Date(e.target.value).getUTCDay();
+
+    if ([0, 6].includes(day)) {
+      showAlert('error', 'No se puede agendar en fin de semana');
+    } else {
+      appointment.date = e.target.value;
+    }
+  });
+}
+
+function showAlert(type, message) {
+  const $previousAlert = document.querySelector('.alert');
+  if ($previousAlert) return;
+
+  const $alert = document.createElement('DIV');
+  $alert.classList.add('alert');
+  $alert.classList.add(type);
+  $alert.classList.add('mb-3');
+  $alert.innerText = message;
+  document.querySelector('.form').insertAdjacentElement('afterbegin', $alert);
+
+  setTimeout(() => {
+    $alert.remove();
+  }, 2000);
 }
