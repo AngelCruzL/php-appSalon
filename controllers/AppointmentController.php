@@ -12,6 +12,7 @@ class AppointmentController
 
     $router->render('appointment/index', [
       'name' => $_SESSION['fullname'],
+      'id' => $_SESSION['id']
     ]);
   }
 }

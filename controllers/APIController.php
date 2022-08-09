@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Model\Service;
+use Model\Appointment;
 
 class APIController
 {
@@ -15,11 +16,9 @@ class APIController
 
   public static function saveAppointment()
   {
-    $response = [
-      'ok' => true,
-      'data' => $_POST
-    ];
+    $appointment = new Appointment($_POST);
+    $result = $appointment->save();
 
-    echo json_encode($response);
+    echo json_encode($result);
   }
 }

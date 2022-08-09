@@ -59,15 +59,15 @@ INSERT INTO services (name, price) VALUES
 ('Lavado de Cabello', 50.00),
 ('Tratamiento Capilar', 150.00);
 
-CREATE TABLE dates(
+CREATE TABLE appointments(
   id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   date DATE NOT NULL,
   time TIME NOT NULL,
   user_id INT(11) NOT NULL REFERENCES users(id) ON UPDATE SET NULL ON DELETE SET NULL
 );
 
-CREATE TABLE dates_services(
+CREATE TABLE appointments_services(
   id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  date_id INT(11) REFERENCES dates(id) ON UPDATE SET NULL ON DELETE SET NULL,
+  date_id INT(11) REFERENCES appointments(id) ON UPDATE SET NULL ON DELETE SET NULL,
   service_id INT(11) REFERENCES services(id) ON UPDATE SET NULL ON DELETE SET NULL
 );

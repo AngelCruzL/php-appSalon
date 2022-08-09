@@ -1,6 +1,7 @@
 let step = 1;
 const BASE_URL = 'http://localhost:3000';
 const appointment = {
+  id: '',
   name: '',
   date: '',
   hour: '',
@@ -140,6 +141,7 @@ function selectService(service) {
 }
 
 function loadAppointmentData() {
+  appointment.id = document.querySelector('#userId').value;
   appointment.name = document.querySelector('#name').value;
   loadAppointmentDate();
   loadAppointmentHour();
@@ -235,13 +237,13 @@ function formatDate(date) {
 }
 
 async function bookAppointment() {
-  const { name, date, hour, services } = appointment;
+  const { id, date, hour, services } = appointment;
   const idServices = services.map(({ id }) => id);
 
   const appointmentData = new FormData();
-  appointmentData.append('name', name);
+  appointmentData.append('user_id', id);
   appointmentData.append('date', date);
-  appointmentData.append('hour', hour);
+  appointmentData.append('time', hour);
   appointmentData.append('services', idServices);
 
   const response = await fetch(`${BASE_URL}/api/citas`, {
