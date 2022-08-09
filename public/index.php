@@ -27,5 +27,6 @@ $router->post('/recuperar', [LoginController::class, 'resetPassword']);
 $router->get('/cita', [AppointmentController::class, 'index']);
 
 $router->get('/api/servicios', [APIController::class, 'index']);
+$router->post('/api/citas', [APIController::class, 'saveAppointment']);
 
 $router->checkRoutes();

@@ -217,6 +217,10 @@ function showResume() {
       </div>`
     );
   });
+  $resume.insertAdjacentHTML(
+    'beforeend',
+    `<button class='btn mb-2' onclick='bookAppointment()'>Reservar cita</button>`
+  );
 }
 
 function formatDate(date) {
@@ -228,6 +232,24 @@ function formatDate(date) {
     day: 'numeric',
   };
   return new Date(day, month - 1, year).toLocaleDateString('es-MX', options);
+}
+
+async function bookAppointment() {
+  const { name, date, hour, services } = appointment;
+  const idServices = services.map(({ id }) => id);
+
+  const appointmentData = new FormData();
+  appointmentData.append('name', name);
+  appointmentData.append('date', date);
+  appointmentData.append('hour', hour);
+  appointmentData.append('services', idServices);
+
+  const response = await fetch(`${BASE_URL}/api/citas`, {
+    method: 'POST',
+    body: appointmentData,
+  });
+  const data = await response.json();
+  console.log(data);
 }
 
 function showAlert(type, message, reference = '.form', hasTimeout = true) {

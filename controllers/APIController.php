@@ -12,4 +12,14 @@ class APIController
 
     echo json_encode($services);
   }
+
+  public static function saveAppointment()
+  {
+    $response = [
+      'ok' => true,
+      'data' => $_POST
+    ];
+
+    echo json_encode($response);
+  }
 }
