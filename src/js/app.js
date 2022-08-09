@@ -261,7 +261,7 @@ async function bookAppointment() {
       }).then(() => {
         setTimeout(() => {
           window.location.reload();
-        }, 1500);
+        }, 500);
       });
     }
   } catch (error) {

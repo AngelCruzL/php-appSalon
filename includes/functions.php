@@ -20,3 +20,8 @@ function s($html): string
 {
 	return htmlspecialchars($html, ENT_QUOTES, 'UTF-8');
 }
+
+function isAuthenticated(): void
+{
+	if (!isset($_SESSION['isLogged'])) header('Location: /');
+}
