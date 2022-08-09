@@ -51,7 +51,9 @@ class LoginController
 
   public static function logout()
   {
-    echo 'LoginController::logout';
+    session_start();
+    $_SESSION = [];
+    header('Location: /');
   }
 
   public static function createAccount(Router $router)
