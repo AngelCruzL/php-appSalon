@@ -138,6 +138,7 @@ function selectService(service) {
 function loadAppointmentData() {
   appointment.name = document.querySelector('#name').value;
   loadAppointmentDate();
+  loadAppointmentHour();
 }
 
 function loadAppointmentDate() {
@@ -146,7 +147,25 @@ function loadAppointmentDate() {
     const day = new Date(e.target.value).getUTCDay();
 
     if ([0, 6].includes(day)) {
+      e.target.value = '';
       showAlert('error', 'No se puede agendar en fin de semana');
+    } else {
+      appointment.date = e.target.value;
+    }
+  });
+}
+
+function loadAppointmentHour() {
+  const $inputHour = document.querySelector('#hour');
+  $inputHour.addEventListener('input', e => {
+    const appointmentHour = e.target.value;
+    const hour = appointmentHour.split(':')[0];
+    if (hour < 10 || hour > 18) {
+      e.target.value = '';
+      showAlert(
+        'error',
+        'Hora no valida, el horario de atención es de 10 a 18'
+      );
     } else {
       appointment.date = e.target.value;
     }
@@ -166,5 +185,5 @@ function showAlert(type, message) {
 
   setTimeout(() => {
     $alert.remove();
-  }, 2000);
+  }, 3000);
 }
