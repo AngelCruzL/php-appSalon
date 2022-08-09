@@ -177,6 +177,11 @@ function loadAppointmentHour() {
 }
 
 function showResume() {
+  const $resume = document.querySelector('.appointmentResume');
+  while ($resume.firstChild) {
+    $resume.removeChild($resume.firstChild);
+  }
+
   if (
     Object.values(appointment).includes('') ||
     appointment.services.length === 0
@@ -187,9 +192,42 @@ function showResume() {
       '.appointmentResume',
       false
     );
-  } else {
-    console.log('tdbn');
+    return;
   }
+
+  const { name, date, hour, services } = appointment;
+  const formatedDate = formatDate(date);
+  $resume.insertAdjacentHTML(
+    'beforeend',
+    `<h3 class='mb-1'>Resumen de la cita</h3>
+    <div>
+      <p><span>Nombre: </span>${name}</p>
+      <p><span>Fecha: </span>${formatedDate}</p>
+      <p><span>Hora: </span>${hour} horas</p>
+    </div>
+    <h3 class='mb-1 mt-2'>Resumen de servicios</h3>
+    <div id='resumeContainer'></div>`
+  );
+  services.forEach(({ name, price }) => {
+    document.getElementById('resumeContainer').insertAdjacentHTML(
+      'afterbegin',
+      `<div class='appointmentResume-service'>
+        <p>${name}</p>
+        <p><span>Precio: </span>$${price}</p>
+      </div>`
+    );
+  });
+}
+
+function formatDate(date) {
+  const [day, month, year] = date.split('-');
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+  return new Date(day, month - 1, year).toLocaleDateString('es-MX', options);
 }
 
 function showAlert(type, message, reference = '.form', hasTimeout = true) {

@@ -1,0 +1,11 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+#resumeContainer {
+  display: grid;
+  gap: 2rem;
+
+  @include m.respond(tablet) {
+    @include m.grid(2, 2rem);
+  }
+}
