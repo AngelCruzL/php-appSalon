@@ -246,12 +246,32 @@ async function bookAppointment() {
   appointmentData.append('time', hour);
   appointmentData.append('services', idServices);
 
-  const response = await fetch(`${BASE_URL}/api/citas`, {
-    method: 'POST',
-    body: appointmentData,
-  });
-  const data = await response.json();
-  console.log(data);
+  try {
+    const response = await fetch(`${BASE_URL}/api/citas`, {
+      method: 'POST',
+      body: appointmentData,
+    });
+    const data = await response.json();
+
+    if (data.result) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Cita creada',
+        text: 'Cita creada correctamente',
+      }).then(() => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
+      });
+    }
+  } catch (error) {
+    console.warn(error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Hubo un error al crear la cita',
+    });
+  }
 }
 
 function showAlert(type, message, reference = '.form', hasTimeout = true) {
