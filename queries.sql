@@ -68,6 +68,6 @@ CREATE TABLE appointments(
 
 CREATE TABLE appointments_services(
   id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  date_id INT(11) REFERENCES appointments(id) ON UPDATE SET NULL ON DELETE SET NULL,
+  appointment_id INT(11) REFERENCES appointments(id) ON UPDATE SET NULL ON DELETE SET NULL,
   service_id INT(11) REFERENCES services(id) ON UPDATE SET NULL ON DELETE SET NULL
 );
