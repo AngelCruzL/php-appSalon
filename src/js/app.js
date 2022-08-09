@@ -1,5 +1,11 @@
 let step = 1;
 const BASE_URL = 'http://localhost:3000';
+const appointment = {
+  name: '',
+  date: '',
+  hour: '',
+  services: [],
+};
 
 document.addEventListener('DOMContentLoaded', function () {
   app();
@@ -109,6 +115,7 @@ function showServices(services = []) {
 
     const $serviceDiv = document.createElement('DIV');
     $serviceDiv.classList.add('service');
+    $serviceDiv.classList.add('textCenter');
     $serviceDiv.dataset.serviceId = id;
     $serviceDiv.onclick = () => selectService(service);
 
@@ -117,4 +124,12 @@ function showServices(services = []) {
 
     document.querySelector('#services').appendChild($serviceDiv);
   });
+}
+
+function selectService(service) {
+  const { id } = service;
+  const { services } = appointment;
+  appointment.services = [...services, service];
+  const $selectedService = document.querySelector(`[data-service-id='${id}']`);
+  $selectedService.classList.toggle('selected');
 }

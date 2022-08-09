@@ -12,7 +12,7 @@
     <div id="step-1" class="section">
       <h2>Servicios</h2>
       <p class="textCenter">Elige tus servicios a continuación</p>
-      <div id="services" class="servicesList"></div>
+      <div id="services" class="servicesList mt-4"></div>
     </div>
 
     <div id="step-2" class="section">
