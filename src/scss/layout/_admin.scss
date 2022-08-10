@@ -1,0 +1,41 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+#adminAppointments {
+  .appointment {
+    display: grid;
+    gap: 2rem;
+    padding: unset;
+    list-style: none;
+
+    @include m.respond(tablet) {
+      @include m.grid(2, 2rem);
+    }
+
+    li {
+      margin-block-start: 2.4rem;
+      padding: 1rem;
+      border-top: 1px solid v.$colorWhite;
+
+      &:hover {
+        cursor: pointer;
+        background-color: darken(v.$colorBlack, 5%);
+      }
+
+      p {
+        font-weight: v.$fontWeightBold;
+        color: v.$colorBlue;
+      }
+
+      span,
+      .appointmentService {
+        font-weight: v.$fontWeightRegular;
+        color: v.$colorWhite;
+      }
+
+      .total {
+        font-size: 2.8rem;
+      }
+    }
+  }
+}
