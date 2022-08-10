@@ -14,6 +14,10 @@
   </form>
 </div>
 
+<?php if (empty($appointments)) : ?>
+  <h2 class="bt-4">No hay citas para la fecha seleccionada</h2>
+<?php endif; ?>
+
 <div id="adminAppointments">
   <ul class="appointment">
     <?php
