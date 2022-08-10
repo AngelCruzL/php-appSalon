@@ -10,6 +10,7 @@ class AdminController
   public static function index(Router $router)
   {
     session_start();
+    isAdmin();
     $currentDate = date('Y-m-d');
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

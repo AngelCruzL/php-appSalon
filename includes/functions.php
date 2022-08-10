@@ -32,3 +32,8 @@ function isAuthenticated(): void
 {
 	if (!isset($_SESSION['isLogged'])) header('Location: /');
 }
+
+function isAdmin(): void
+{
+	if (!isset($_SESSION['isAdmin'])) header('Location: /');
+}
