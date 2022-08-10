@@ -5,11 +5,12 @@
 <h2>Buscar Citas</h2>
 
 <div class="search">
-  <form class="form mb-5">
+  <form class="form mb-3" method="POST">
     <div class="formField">
       <label for="date">Fecha</label>
-      <input type="date" id="date" name="date">
+      <input type="date" id="date" name="date" value="<?php echo $currentDate; ?>">
     </div>
+    <input type="submit" class="btn" value="Buscar">
   </form>
 </div>
 
