@@ -1,4 +1,5 @@
 @use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
 
 *,
 *:before,
@@ -18,6 +19,10 @@ body {
   min-block-size: 100%;
   background-color: v.$colorBlack;
   color: v.$colorWhite;
+
+  @include m.respond(tablet) {
+    block-size: 100%;
+  }
 }
 
 h1,

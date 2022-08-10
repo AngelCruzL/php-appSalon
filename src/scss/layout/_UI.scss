@@ -27,6 +27,10 @@
 
     @include m.respond(tablet) {
       inline-size: 75%;
+      overflow: scroll;
+      overflow-x: unset;
+      scrollbar-width: thin;
+      scrollbar-color: transparent transparent;
     }
   }
 }
