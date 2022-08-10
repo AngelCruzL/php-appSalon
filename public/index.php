@@ -31,5 +31,6 @@ $router->post('/admin', [AdminController::class, 'index']);
 
 $router->get('/api/servicios', [APIController::class, 'index']);
 $router->post('/api/citas', [APIController::class, 'saveAppointment']);
+$router->post('/api/eliminar', [APIController::class, 'deleteAppointment']);
 
 $router->checkRoutes();

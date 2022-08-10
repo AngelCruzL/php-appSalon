@@ -4,3 +4,7 @@
 .btn {
   @include m.button(v.$colorBlue, v.$colorWhite);
 }
+.btnDelete {
+  @include m.button(v.$colorRed, v.$colorWhite);
+  margin-block: unset;
+}

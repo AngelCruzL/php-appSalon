@@ -15,7 +15,7 @@
 </div>
 
 <?php if (empty($appointments)) : ?>
-  <h2 class="bt-4">No hay citas para la fecha seleccionada</h2>
+  <h2 class="mt-4">No hay citas para la fecha seleccionada</h2>
 <?php endif; ?>
 
 <div id="adminAppointments">
@@ -47,6 +47,11 @@
         if (isTheLastElement($currentAppointment, $nextAppointment)) :
         ?>
           <p class="total">Total: <span>$<?php echo $total; ?></span></p>
+
+          <form action="/api/eliminar" method="POST">
+            <input type="hidden" name="appointmentId" value="<?php echo $appointment->id; ?>">
+            <input type="submit" value="Eliminar cita" class="btnDelete">
+          </form>
       <?php
         endif;
       endforeach;
