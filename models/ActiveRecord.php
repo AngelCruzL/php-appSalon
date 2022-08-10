@@ -218,4 +218,18 @@ class ActiveRecord
 
 		return array_shift($result);
 	}
+
+	/**
+	 * It takes a SQL query as a parameter, and returns the result of the query
+	 *
+	 * @param query The SQL query you want to run.
+	 *
+	 * @return The result of the query.
+	 */
+	public static function SQL($query)
+	{
+		$result = self::sqlConsult($query);
+
+		return $result;
+	}
 }
