@@ -7,6 +7,7 @@ use Controllers\LoginController;
 use Controllers\AppointmentController;
 use Controllers\AdminController;
 use Controllers\APIController;
+use Controllers\ServiceController;
 
 $router = new Router();
 
@@ -32,5 +33,12 @@ $router->post('/admin', [AdminController::class, 'index']);
 $router->get('/api/servicios', [APIController::class, 'index']);
 $router->post('/api/citas', [APIController::class, 'saveAppointment']);
 $router->post('/api/eliminar', [APIController::class, 'deleteAppointment']);
+
+$router->get('/servicios', [ServiceController::class, 'index']);
+$router->get('/servicios/crear', [ServiceController::class, 'createService']);
+$router->post('/servicios/crear', [ServiceController::class, 'createService']);
+$router->get('/servicios/actualizar', [ServiceController::class, 'updateService']);
+$router->post('/servicios/actualizar', [ServiceController::class, 'updateService']);
+$router->post('/servicios/eliminar', [ServiceController::class, 'deleteService']);
 
 $router->checkRoutes();
