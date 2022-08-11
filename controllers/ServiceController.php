@@ -67,8 +67,13 @@ class ServiceController
     ]);
   }
 
-  public static function deleteService(Router $router)
+  public static function deleteService()
   {
-    echo '<h1>Eliminar Servicio</h1>';
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $id = $_POST['id'];
+      $service = Service::find($id);
+      $service->delete();
+      header('Location: /servicios');
+    }
   }
 }
