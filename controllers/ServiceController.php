@@ -11,8 +11,11 @@ class ServiceController
   {
     session_start();
 
+    $services = Service::all();
+
     $router->render('services/index', [
       'name' => $_SESSION['fullname'],
+      'services' => $services
     ]);
   }
 

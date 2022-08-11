@@ -1,41 +1,65 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 
-#adminAppointments {
-  .appointment {
-    display: grid;
-    gap: 2rem;
-    padding: unset;
-    list-style: none;
+.appointment {
+  display: grid;
+  gap: 2rem;
+  padding: unset;
+  list-style: none;
 
-    @include m.respond(tablet) {
-      @include m.grid(2, 2rem);
+  @include m.respond(tablet) {
+    @include m.grid(2, 2rem);
+  }
+
+  li {
+    margin-block-start: 2.4rem;
+    padding: 1rem;
+    border-top: 1px solid v.$colorWhite;
+
+    &:hover {
+      cursor: pointer;
+      background-color: darken(v.$colorBlack, 5%);
     }
 
-    li {
-      margin-block-start: 2.4rem;
-      padding: 1rem;
-      border-top: 1px solid v.$colorWhite;
+    p {
+      font-weight: v.$fontWeightBold;
+      color: v.$colorBlue;
+    }
 
-      &:hover {
-        cursor: pointer;
-        background-color: darken(v.$colorBlack, 5%);
-      }
+    span,
+    .appointmentService {
+      font-weight: v.$fontWeightRegular;
+      color: v.$colorWhite;
+    }
 
-      p {
-        font-weight: v.$fontWeightBold;
-        color: v.$colorBlue;
-      }
+    .total {
+      font-size: 2.8rem;
+    }
+  }
+}
 
-      span,
-      .appointmentService {
-        font-weight: v.$fontWeightRegular;
-        color: v.$colorWhite;
-      }
+.services {
+  @extend .appointment;
 
-      .total {
-        font-size: 2.8rem;
+  li {
+    &:hover {
+      cursor: unset;
+      background-color: unset;
+    }
+  }
+
+  .actions {
+    form {
+      margin-block-start: 2rem;
+
+      @include m.respond(tablet) {
+        margin-block-start: unset;
       }
     }
+  }
+
+  .btn,
+  .btnDelete {
+    margin-block: 0;
   }
 }
