@@ -10,6 +10,7 @@ class ServiceController
   public static function index(Router $router)
   {
     session_start();
+    isAdmin();
 
     $services = Service::all();
 
@@ -22,6 +23,8 @@ class ServiceController
   public static function createService(Router $router)
   {
     session_start();
+    isAdmin();
+
     $service = new Service;
     $alerts = [];
 
@@ -45,6 +48,8 @@ class ServiceController
   public static function updateService(Router $router)
   {
     session_start();
+    isAdmin();
+
     if (!is_numeric($_GET['id'])) header('Location: /servicios');
 
     $service = Service::find($_GET['id']);
@@ -69,6 +74,9 @@ class ServiceController
 
   public static function deleteService()
   {
+    session_start();
+    isAdmin();
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $id = $_POST['id'];
       $service = Service::find($id);
