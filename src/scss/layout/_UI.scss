@@ -42,18 +42,3 @@
 .pageName {
   margin-block: 5rem;
 }
-
-.topBar {
-  margin-block: v.$gap;
-
-  @include m.respond(tablet) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .btn {
-    @include m.button(v.$colorBlack, v.$colorWhite);
-    margin: unset;
-  }
-}

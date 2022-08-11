@@ -1,0 +1,30 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.topBar {
+  margin-block: v.$gap;
+
+  @include m.respond(tablet) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .btn {
+    @include m.button(v.$colorBlack, v.$colorWhite);
+    margin: unset;
+  }
+
+  &-services {
+    margin-block-end: v.$gap;
+
+    @include m.respond(tablet) {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .btn {
+      margin-block: 0 1rem;
+    }
+  }
+}
