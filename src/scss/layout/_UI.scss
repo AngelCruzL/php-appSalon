@@ -32,6 +32,10 @@
       scrollbar-width: thin;
       scrollbar-color: transparent transparent;
     }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
 
