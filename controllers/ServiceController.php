@@ -23,6 +23,7 @@ class ServiceController
   {
     session_start();
     $service = new Service;
+    $alerts = [];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $service->sync($_POST);
@@ -43,13 +44,26 @@ class ServiceController
 
   public static function updateService(Router $router)
   {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    }
-
     session_start();
+    if (!is_numeric($_GET['id'])) header('Location: /servicios');
+
+    $service = Service::find($_GET['id']);
+    $alerts = [];
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $service->sync($_POST);
+      $alerts = $service->validateService();
+
+      if (empty($alerts)) {
+        $service->save();
+        header('Location: /servicios');
+      }
+    }
 
     $router->render('services/update', [
       'name' => $_SESSION['fullname'],
+      'service' => $service,
+      'alerts' => $alerts
     ]);
   }
 
